@@ -1,7 +1,8 @@
 import ToggleMode from "@/components/shared/header/toggle-mode";
 import {Button} from "@/components/ui/button";
 import Link from "next/link";
-import {ShoppingCart, UserIcon} from "lucide-react";
+import {EllipsisVertical, ShoppingCart, UserIcon} from "lucide-react";
+import {Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger} from "@/components/ui/sheet";
 
 export default function Menu() {
     return (
@@ -18,6 +19,28 @@ export default function Menu() {
                         <UserIcon/> Login
                     </Link>
                 </Button>
+            </nav>
+            <nav className={'md:hidden'}>
+                <Sheet>
+                    <SheetTrigger className={'align-middle'}>
+                        <EllipsisVertical/>
+                    </SheetTrigger>
+                    <SheetContent className={'flex flex-col items-start'}>
+                        <SheetTitle>Menu</SheetTitle>
+                        <ToggleMode/>
+                        <Button asChild variant={'ghost'}>
+                            <Link href={'/cart'}>
+                                <ShoppingCart/> Cart
+                            </Link>
+                        </Button>
+                        <Button asChild>
+                            <Link href={'/sign-in'}>
+                                <UserIcon/> Login
+                            </Link>
+                        </Button>
+                        <SheetDescription></SheetDescription>
+                    </SheetContent>
+                </Sheet>
             </nav>
         </div>
     );
